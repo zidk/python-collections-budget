@@ -46,7 +46,7 @@ def test_task2_module4():
                                 y.name == 'categorize_set_comprehension'):
                             for z in y.body:
                                 assignments = utils.get_assignments_from_child(z)
-                                print("assignments = " + str(assignments))
+
                                 if 'necessary_expenses:x:x:self:list' in assignments[0]:
                                    necessary_expenses_found = True
                                    if ('x:category:Phone' in assignments[0] and
@@ -78,7 +78,7 @@ def test_task3_module4():
                                 y.name == 'categorize_set_comprehension'):
                             for z in y.body:
                                 assignments = utils.get_assignments_from_child(z)
-                                print("assignments = " + str(assignments))
+
                                 if 'food_expenses:x:x:self:list' in assignments[0]:
                                    food_expenses_found = True
                                    if ('x:category:Groceries' in assignments[0] and
@@ -106,7 +106,7 @@ def test_task4_module4():
                                 y.name == 'categorize_set_comprehension'):
                             for z in y.body:
                                 assignments = utils.get_assignments_from_child(z)
-                                print("assignments = " + str(assignments))
+
                                 if ('unnecessary_expenses:set:self:list' in assignments[0] and 
                                     'necessary_expenses' in assignments[0] and 
                                     'food_expenses' in assignments[0]):
@@ -133,7 +133,7 @@ def test_task5_module4():
                                 y.name == 'categorize_set_comprehension'):
                             for z in y.body:
                                 returns = utils.get_returns_from_child(z)
-                                print("returns = " + str(returns))
+
                                 if 'necessary_expenses:food_expenses:unnecessary_expenses' in returns:
                                     return_found = True
 
@@ -148,7 +148,7 @@ def test_task5_module4():
 @pytest.mark.test_task6_module4
 def test_task6_module4():
     assignments = utils.get_assignments(ExpenseCategories)
-    print("assignments = " + str(assignments))
+
     message = 'Did you call `categorize_set_comprehension()` on `expenses` and assign the result to a variabled named `divided_set_comp`?'
     assert 'divided_set_comp:expenses:categorize_set_comprehension' in assignments, message
 
@@ -156,7 +156,7 @@ def test_task6_module4():
 @pytest.mark.test_task7_module4
 def test_task7_module4():
     ifs = utils.get_if_statements(ExpenseCategories)
-    print("ifs = " + str(ifs))
+
     message = 'Did you create an `if` statement that checks if `divided_set_comp` and `divided_for_loop` are NOT equal?'
     if_found = ('divided_set_comp:divided_for_loop:print:Sets are NOT equal by == test' in ifs or 
                 'divided_for_loop:divided_set_comp:print:Sets are NOT equal by == test' in ifs)
@@ -166,7 +166,7 @@ def test_task7_module4():
 @pytest.mark.test_task8_module4
 def test_task8_module4():
     fors = utils.get_for_loops(ExpenseCategories)
-    print("fors = " + str(fors))
+
     for_loop_found = False
     for x in fors:
         if 'a:b:zip:divided_for_loop:divided_set_comp' in x:
@@ -179,7 +179,7 @@ def test_task8_module4():
 @pytest.mark.test_task9_module4
 def test_task9_module4():
     fors = utils.get_for_loops(ExpenseCategories)
-    print("fors = " + str(fors))
+
 
     for_str = 'a:b:zip:divided_for_loop:divided_set_comp:a:issubset:b:b:issubset:a:print:Sets are NOT equal by subset test'
     message = 'Did you create an `for` loop that uses `a,b` as iterator variables to iterate `zip(divided_for_loop, divided_set_comp)`?'

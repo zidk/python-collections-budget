@@ -21,7 +21,6 @@ def test_task1_module5():
 def test_task2_module5():
     found_timeit_call = False
     calls = utils.get_calls(ExpenseCategories)
-    print("calls = " + str(calls))
 
     expected_timeit_str = 'timeit:timeit:stmt:pass:setup:\n:number:100000:globals:globals'
     expected_timeit_str_2 = 'timeit:timeit:stmt:expenses.categorize_for_loop():setup:\n from . import Expense\nexpenses = Expense.Expenses()\nexpenses.read_expenses(\'data/spending_data.csv\')\n:number:100000:globals:globals'
@@ -39,7 +38,6 @@ def test_task2_module5():
 def test_task3_module5():
     found_timeit_call = False
     calls = utils.get_calls(ExpenseCategories)
-    print("calls = " + str(calls))
 
     expected_timeit_str = 'timeit:timeit:stmt:expenses.categorize_for_loop():setup:\n from . import Expense\nexpenses = Expense.Expenses()\nexpenses.read_expenses(\'data/spending_data.csv\')\n:number:100000:globals:globals'
 
@@ -55,7 +53,6 @@ def test_task3_module5():
 def test_task4_module5():
     found_timeit_call = False
     calls = utils.get_calls(ExpenseCategories)
-    print("calls = " + str(calls))
 
     expected_timeit_str = 'print:timeit:timeit:stmt:expenses.categorize_for_loop():setup:\n from . import Expense\nexpenses = Expense.Expenses()\nexpenses.read_expenses(\'data/spending_data.csv\')\n:number:100000:globals:globals'
 
@@ -71,7 +68,6 @@ def test_task4_module5():
 def test_task5_module5():
     found_timeit_call = False
     calls = utils.get_calls(ExpenseCategories)
-    print("calls = " + str(calls))
 
     expected_timeit_str = 'print:timeit:timeit:stmt:expenses.categorize_set_comprehension():setup:\n from . import Expense\nexpenses = Expense.Expenses()\nexpenses.read_expenses(\'data/spending_data.csv\')\n:number:100000:globals:globals'
 
@@ -101,7 +97,6 @@ def test_task6_module5():
                             fig_ax_tuple_found = True
 
                             calls = utils.get_calls_from_child(y)
-                            print("calls = " + str(calls))
                             if ('plt:subplots' in calls):
                                 plt_subplots_call_found = True
 
@@ -143,7 +138,6 @@ def test_task7_module5():
 @pytest.mark.test_task8_module5
 def test_task8_module5():
     assigns = utils.get_assignments(ExpenseCategories)
-    print("assigns = " + str(assigns))
 
     assert 'divided_expenses_sum' in assigns, 'Did you create a variable `divided_expenses_sum` assigned to an empty list?'
 
@@ -151,7 +145,6 @@ def test_task8_module5():
 @pytest.mark.test_task9_module5
 def test_task9_module5():
     fors = utils.get_for_loops(ExpenseCategories)
-    print("fors = " + str(fors))
     found_for_loop = False
 
     for x in fors:
@@ -182,14 +175,12 @@ def test_task10_module5():
                             y.value.func.attr == 'pie'):
                             ax_pie_found = True
                             call = utils.get_calls_from_child(y)
-                            print("call = " + str(call))
                             if ('ax:pie:divided_expenses_sum:labels:labels:autopct:%1.1f%%' in call):
                                 correct_values = True
 
 
     except Exception as e:
-            print('ax.bar() e = ' + str(e))
-            # pass
+            pass
 
     assert ax_pie_found, 'Did you call `ax.pie()`?'
     assert correct_values, 'Did you call `ax.pie()` with the following parameters: `divided_expenses_sum, labels=labels, autopct=\'%1.1f%%\'`?'

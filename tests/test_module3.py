@@ -152,7 +152,7 @@ def test_task5_module3():
             # print('for print e = ' + str(e))
             pass
     
-    assert for_mybudgetlist_found, 'Did you create a for loop that iterates `expenses.list`?'
+    assert for_mybudgetlist_found, 'Did you create a for loop that iterates `myBudgetList`, with `entry` as the name of the iterator?'
     assert print_call_found, 'Did you call `print(entry)`?'
 
 # Import Matplotlib
@@ -187,7 +187,7 @@ def test_task7_module3():
             # print('for print e = ' + str(e))
             pass
     
-    assert fig_ax_tuple_found and plt_subplots_call_found, 'Did you call assign a Tuple `fig,ax` to `plt.subplots`?'
+    assert fig_ax_tuple_found and plt_subplots_call_found, 'Did you call `plt.subplots()` and assign it a Tuple `fig,ax`??'
 
 # Assign labels []
 @pytest.mark.test_task8_module3

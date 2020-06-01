@@ -155,8 +155,9 @@ def test_task4_module2():
     
     assert append_def_found, 'Did you define the method `def append(self, item)`?'
     assert self_found and sum_expenses_found and op_add_found and lt_found and self_budget_found, 'Add an `if` statement that checks if `self.sum_expenses+item < self.budget`.'
-    assert sum_exp_inc_found, 'Inside the if statement, did you call `self.sum_expenses += item`?'
     assert exp_append_item_found, 'Inside the if statement, did you call `self.expenses.append(item)`?'
+    assert sum_exp_inc_found, 'Inside the if statement, did you call `self.sum_expenses += item`?'
+    
 
 # Add overages in append()
 @pytest.mark.test_task5_module2
@@ -197,8 +198,9 @@ def test_task5_module2():
             pass
     
     assert append_def_found, 'Did you define the method `def append(self, item)`?'
-    assert sum_over_inc_found, 'Inside the else statement, did you call `self.sum_overages+=item`?'
     assert over_append_item_found, 'Inside the else statement, did you call `self.overages.append(item)`?'
+    assert sum_over_inc_found, 'Inside the else statement, did you call `self.sum_overages+=item`?'
+    
 
 # Create __len__()
 @pytest.mark.test_task6_module2

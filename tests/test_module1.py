@@ -9,7 +9,7 @@ from os import path
 @pytest.mark.test_task1_module1
 def test_task1_module1():
     assert path.exists('budget/FrequentExpenses.py'), 'Did you create a file named `FrequentExpenses.py` ?'
-    assert 'Expense' in dir(FrequentExpenses), 'Have you imported the built-in `collections` library?'
+    assert 'Expense' in dir(FrequentExpenses), 'Did you add `from . import Expense` to the top of the file?'
 
 # expenses = Expense.Expenses()
 @pytest.mark.test_task2_module1
@@ -22,13 +22,24 @@ def test_task2_module1():
 def test_task3_module1():
     assert 'spending_categories' in get_assignments(FrequentExpenses), 'Are you initializing `spending_categories` to an empty list?'
 
-    target_id_bool = get_for_loops(FrequentExpenses, 'dict')[0]['target:id'] == 'expense'
-    iter_value_id_bool = get_for_loops(FrequentExpenses, 'dict')[0]['iter:value:id'] == 'expenses'
-    iter_attr_bool = get_for_loops(FrequentExpenses, 'dict')[0]['iter:attr'] == 'list'
+    target_id_bool = False 
+    iter_value_id_bool = False 
+    iter_attr_bool = False
+
+    try:
+        target_id_bool = get_for_loops(FrequentExpenses, 'dict')[0]['target:id'] == 'expense'
+        iter_value_id_bool = get_for_loops(FrequentExpenses, 'dict')[0]['iter:value:id'] == 'expenses'
+        iter_attr_bool = get_for_loops(FrequentExpenses, 'dict')[0]['iter:attr'] == 'list'
+    except:
+        pass
     message = 'Do you have a `for` loop that loops through the `expenses.list`?'
     assert target_id_bool and iter_value_id_bool and iter_attr_bool, message
 
-    body_bool = get_for_loops(FrequentExpenses, 'dict')[0]['body'] == 'spending_categories:append:expense:category'
+    body_bool = False
+    try:
+        body_bool = get_for_loops(FrequentExpenses, 'dict')[0]['body'] == 'spending_categories:append:expense:category'
+    except:
+        pass
     message = 'Did you call `spending_categories.append()` with `expense.category` inside the for loop?'
     assert body_bool, message
 
