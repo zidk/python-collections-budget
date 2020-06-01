@@ -26,17 +26,17 @@ class Expenses():
                 self.sum += amount
 
     def categorize_for_loop(self):
-            necessary_expenses2 = set()
-            food_expenses2 = set()
-            unnecessary_expenses2 = set()
+            necessary_expenses = set()
+            food_expenses = set()
+            unnecessary_expenses = set()
             for i in self.list:
-                if (i.category == 'Phone'      or i.category == 'Auto and Gas' or 
+                if (i.category == 'Phone'    or i.category == 'Auto and Gas' or 
                     i.category == 'Classes'  or i.category == 'Utilities' or 
                     i.category == 'Mortgage'): 
-                    necessary_expenses2.add(i)
+                    necessary_expenses.add(i)
                 elif(i.category == 'Groceries' or i.category == 'Eating Out'):
-                    food_expenses2.add(i)
+                    food_expenses.add(i)
                 else:
-                    unnecessary_expenses2.add(i)
+                    unnecessary_expenses.add(i)
             
-            return [necessary_expenses2, food_expenses2, unnecessary_expenses2]
+            return [necessary_expenses, food_expenses, unnecessary_expenses]

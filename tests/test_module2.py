@@ -138,9 +138,11 @@ def test_task4_module2():
 
                                     for item in z.body:
                                         aug_assign = utils.get_augassignments_from_child(item)
+                                        assign = utils.get_assignments_from_child(item)
                                         func_call = utils.get_calls_from_child(item)
-
-                                        if ('self:sum_expenses:item' in aug_assign):
+                                        
+                                        if ('self:sum_expenses:item' in aug_assign or 
+                                            'self:sum_expenses:self:sum_expenses:item' in assign):
                                             sum_exp_inc_found = True
                                         if ('self:expenses:append:item' in func_call):
                                             exp_append_item_found = True
@@ -183,7 +185,10 @@ def test_task5_module2():
                                     for item in z.orelse:
                                         aug_assign = utils.get_augassignments_from_child(item)
                                         func_call = utils.get_calls_from_child(item)
-                                        if ('self:sum_overages:item' in aug_assign):
+                                        assign = utils.get_assignments_from_child(item)
+                                        
+                                        if ('self:sum_overages:item' in aug_assign or 
+                                            'self:sum_overages:self:sum_overages:item' in assign):
                                             sum_over_inc_found = True
                                         if ('self:overages:append:item' in func_call):
                                             over_append_item_found = True                       
