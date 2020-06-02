@@ -151,9 +151,9 @@ def test_task9_module5():
         if 'category_exps:divided_set_comp' in x:
             found_for_loop = True
 
+    for_str = 'category_exps:divided_set_comp:divided_expenses_sum:append:sum:x:amount:x:category_exps:0'
     assert found_for_loop, 'Did you create a `for` loop that has an iterator called `category_exps` and loops through `divided_set_comp`?'
-    assert ('category_exps:divided_set_comp:divided_expenses_sum:append:sum:x:amount:x:category_exps:0' in fors, 
-           'Inside the for loop, did you call `divided_expenses_sum.append()`, with `x.amount for x in category_exps` as the argument?')
+    assert for_str in fors, 'Inside the for loop, did you call `divided_expenses_sum.append()`, with `x.amount for x in category_exps` as the argument?'
 
 # Call ax.pie()
 # ax.pie(divided_expenses_sum, labels=labels, autopct='%1.1f%%')
