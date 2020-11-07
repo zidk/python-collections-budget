@@ -42,7 +42,7 @@ class Expenses:
 
         return [necessary_expenses, food_expenses, unnecessary_expenses]
 
-    def categorize_set_compreshension(self):
+    def categorize_set_comprehension(self):
         necessary_expenses = {
             x for x in self.list
             if
